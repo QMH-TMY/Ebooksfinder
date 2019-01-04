@@ -30,5 +30,6 @@ Usage
 
     $ Ebooksfinder [yourebook.epub | yourebook.mobi]
 
-		Just for fun!
-			Jan 4,2019, Chengdu, China.
+	Just for fun!
+		Jan 4,2019. 
+		Chengdu, China.

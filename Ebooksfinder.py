@@ -1,5 +1,19 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+# Copyright 2019 Shieber
+# All Rights Reserved.
+#
+#    Licensed under the Apache License, Version 2.0 (the "License"); you may
+#    not use this file except in compliance with the License. You may obtain
+#    a copy of the License at
+#
+#         http://www.apache.org/licenses/LICENSE-2.0
+#
+#    Unless required by applicable law or agreed to in writing, software
+#    distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+#    WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+#    License for the specific language governing permissions and limitations
+#    under the License.
 # 自动获取电子书中作者提到的所有书籍
 # 保存在文件'epubname_booklist.txt'中
 
@@ -18,6 +32,8 @@ from re import compile as Compile
 import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')                         #解决中文解析出错的问题
+
+__version__ = '0.1'
 
 class EPUB_books_finder():
 	'''
@@ -131,8 +147,8 @@ class EPUB_books_finder():
 			books_Obj.write(books[b]+ '\n')             #再次写入
 		books_Obj.close()
 
-	def search_reserve_books(self):  
-		'''总函数，直接调用这一个就可'''
+	def main(self):
+		'''主函数，直接调用这一个就可'''
 		if len(sys.argv) != 2:
 			print("Usage: python %s [xx.epub|xx.mobi]"%sys.argv[0])
 			sys.exit(-1)
@@ -160,4 +176,4 @@ if __name__ == "__main__":
 		print("Usage: python %s [xx.epub|xx.mobi]"%sys.argv[0])
 		sys.exit(-1)
 	book_finder = EPUB_books_finder()
-	book_finder.search_reserve_books()
+	book_finder.main()

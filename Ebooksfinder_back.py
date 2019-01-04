@@ -1,7 +1,21 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+# Copyright 2019 Shieber
+# All Rights Reserved.
+#
+#    Licensed under the Apache License, Version 2.0 (the "License"); you may
+#    not use this file except in compliance with the License. You may obtain
+#    a copy of the License at
+#
+#         http://www.apache.org/licenses/LICENSE-2.0
+#
+#    Unless required by applicable law or agreed to in writing, software
+#    distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+#    WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+#    License for the specific language governing permissions and limitations
+#    under the License.
 # 自动获取电子书中作者提到的所有书籍
-# 保存在文件中 '20xxbooknames.txt'
+# 保存在文件'epubname_booklist.txt'中
 
 import re
 import os,sys
@@ -105,9 +119,8 @@ class EPUB_books_finder():
 
 	def rmduplicate(self):
 		'''去除重复记录的书籍'''
-		if os.path.exists(self.booklist_name)
-			send2trash(zip_dir)                         #没有找到推荐书籍，删除解压缩得到的文件夹　
-			sys.exit(0)
+		if not os.path.exists(self.booklist_name):
+			return                                      #没有找到推荐书籍，删除解压缩得到的文件夹　
 
 		books = []
 		books_Obj = open(self.booklist_name) 
