@@ -27,6 +27,7 @@ from zipfile import ZipFile
 from os.path    import join 
 from os.path    import  isdir
 from os.path    import  exists 
+from os.path    import  basename 
 from send2trash import send2trash
 from re import compile as Compile 
 import sys
@@ -35,10 +36,11 @@ sys.setdefaultencoding('utf-8')                         #解决中文解析出�
 
 __version__ = '0.1'
 
-class EPUB_books_finder():
+class EPUBbooksfinder():
 	'''
 		epub,mobi电子书中推荐书籍获取器，通过命令行传入电子书名称
 	    程序自动查找书中作者推荐的所有以中文书名号《》括起来的书籍。
+		通过使用-a命令行参数，自动查找当前目录下的所有电子书推荐书籍。
 	'''
 	def __init__(self):
 		'''初始化程序运行的信息'''
@@ -147,7 +149,7 @@ class EPUB_books_finder():
 			books_Obj.write(books[b]+ '\n')             #再次写入
 		books_Obj.close()
 
-	def main(self):
+	def search(self):
 		'''主函数，直接调用这一个就可'''
 		if len(sys.argv) != 2:
 			print("Usage: python %s [xx.epub|xx.mobi]"%sys.argv[0])
@@ -171,9 +173,22 @@ class EPUB_books_finder():
 		self.rmduplicate()                              #去除重复记录的书籍,没有则直接返回
 		send2trash(zip_dir)                             #删除解压缩得到的文件夹　
 
-if __name__ == "__main__":
-	if len(sys.argv) != 2:
-		print("Usage: python %s [xx.epub|xx.mobi]"%sys.argv[0])
+def main():
+	'''主函数'''
+	if len(sys.argv) < 2:
+		base_name = basename(sys.argv[0])
+		print("Usage: %s [xx.epub|xx.mobi] or %s -a"%(base_name, base_name))
 		sys.exit(-1)
-	book_finder = EPUB_books_finder()
-	book_finder.main()
+
+	if  '-a' == sys.argv[1]:
+		for item in listdir('.'):
+			if item.endswith('.epub') or item.endswith('.mobi'):
+				sys.argv[1] = item 
+				ebooksfinder = EPUBbooksfinder()
+				ebooksfinder.search()
+	else:
+		ebooksfinder = EPUBbooksfinder()
+		ebooksfinder.search()
+
+if __name__ == "__main__":
+	main()
