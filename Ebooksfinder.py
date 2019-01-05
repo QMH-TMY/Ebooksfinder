@@ -150,7 +150,7 @@ class EPUBbooksfinder():
 		books_Obj.close()
 
 	def search(self):
-		'''主函数，直接调用这一个就可'''
+		'''功能函数，直接调用这一个就可'''
 		if len(sys.argv) != 2:
 			print("Usage: python %s [xx.epub|xx.mobi]"%sys.argv[0])
 			sys.exit(-1)
@@ -174,7 +174,7 @@ class EPUBbooksfinder():
 		send2trash(zip_dir)                             #删除解压缩得到的文件夹　
 
 def main():
-	'''主函数'''
+	'''主函数，程序入口'''
 	if len(sys.argv) < 2:
 		base_name = basename(sys.argv[0])
 		print("Usage: %s [xx.epub|xx.mobi] or %s -a"%(base_name, base_name))
