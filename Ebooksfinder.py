@@ -166,6 +166,9 @@ class EPUBbooksfinder():
 			if isdir(item):                             #是路径就进入查找
 				self.find_xhtml(item)                   #查找同名文件夹下的(x)html文件，核心函数
 
+			if self.isxhtml(item):
+				self.html_list.append(item)
+
 		chdir('../')                                    #退回当前目录,开始查找书籍任务
 		for html_file in self.html_list:
 			self.find_book(zip_dir + self.delimiter + html_file)  
