@@ -6,23 +6,6 @@ Versions
 --------
 Ebooksfinder works with Python 2.7
 
-Installation
-------------
-
-Github
-~~~~~~
-
-::
-
-    pip install git+https://github.com/QMH-TMY/Ebooksfinder.git
-
-or
-
-::
-
-    git clone https://github.com/QMH-TMY/Ebooksfinder.git
-    python Ebooksfinder/setup.py install
-
 Usage
 -----
 
