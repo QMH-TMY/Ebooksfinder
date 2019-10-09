@@ -1,12 +1,11 @@
 -----------------
 # Compatible OS #
 -----------------
-	Unix
-	Linux
-	Windows
+	Mac OS
+	Unix-like OS
 
 ----------------
-# Descriptino  #
+# Description  #
 ----------------
 Command line interface for finding books recommended by author in an ebook(epub or mobi type).
 
