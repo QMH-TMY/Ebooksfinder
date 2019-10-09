@@ -1,3 +1,9 @@
+-----------------
+# Compatible OS #
+-----------------
+	Unix
+	Linux
+	Windows
 ----------------
 # Ebooksfinder #
 ----------------
@@ -8,5 +14,5 @@ Command line interface for finding books recommended by author in an ebook(epub 
 	$ sudo pip3 install zipfile
 
 # Usage #
-    $ Ebooksfinder ebook.epub 
-    $ Ebooksfinder ebook.mobi
+    $ python3 Ebooksfinder ebook.epub 
+    $ python3 Ebooksfinder ebook.mobi
