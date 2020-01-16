@@ -1,22 +1,14 @@
------------------
-# Compatible OS #
------------------
-	Mac OS
-	Unix-like OS
+### Compatible OS 
+- Linux
+- Mac OS
 
-----------------
-# Description  #
-----------------
-Command line interface for finding books recommended by author in an ebook(epub or mobi type).
+### Description  
+[[中文版](./README_CN.m)] Command line interface for finding books recommended by author in an ebook(epub or mobi type).
 
-----------------
-# Requirement #
-----------------
-	zipfile
+### Requirement 
+	need zipfile
 	$ sudo pip3 install zipfile
 
-----------------
-# Usage #
-----------------
+### Usage 
     $ python3 Ebooksfinder ebook.epub 
     $ python3 Ebooksfinder ebook.mobi
