@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
 #    Author: Shieber
@@ -19,14 +19,14 @@ class EPUBbooksfinder():
         程序自动查找书中作者推荐的所有以中文书名号《》括起来的书籍。
         通过使用-a命令行参数，自动查找当前目录下的所有电子书推荐书籍。
     '''
-    def __init__(self,suffix='_booklist.txt'):
+    def __init__(self,suffix='.bklst'):
         '''初始化程序运行的信息'''
-        self.delimiter = '/'                          #目录分隔符,windows下是\
-        self.htmlLst = []                             #全局变量，保存(x)html的具体路径
-        self.epubName = sys.argv[1]                   #初始化电子书名
-        self.suffix    = suffix                       #书单的后缀名,可自行设置
-        self.prefix    = self.getPrefix(sys.argv[1])  #电子书前缀名
-        self.booklist  = self.prefix + self.suffix    #书单名称
+        self.delimiter= '/'                          #目录分隔符,windows下是\
+        self.htmlLst  = []                           #全局变量，保存(x)html的具体路径
+        self.epubName = sys.argv[1]                  #初始化电子书名
+        self.suffix   = suffix                       #书单的后缀名,可自行设置
+        self.prefix   = self.getPrefix(sys.argv[1])  #电子书前缀名
+        self.booklist = self.prefix + self.suffix    #书单名称
 
     def getPrefix(self,name):
         '''提取电子书或任意文件的前缀名'''
@@ -111,7 +111,7 @@ class EPUBbooksfinder():
     def search(self):
         '''功能函数，直接调用这一个就可'''
         if len(sys.argv) != 2:
-            print("Usage: python %s [xx.epub|xx.mobi]"%sys.argv[0])
+            print(f"Usage: python {sys.argv[0]} [xx.epub|xx.mobi]")
             sys.exit(-1)
 
         cwd = getcwd()
@@ -138,8 +138,8 @@ class EPUBbooksfinder():
 def main():
     '''主函数，程序入口'''
     if len(sys.argv) < 2:
-        base_name = basename(sys.argv[0])
-        print("Usage: %s [xx.epub|xx.mobi] or %s -a"%(base_name, base_name))
+        script = basename(sys.argv[0])
+        print(f"Usage: {script} [xx.epub|xx.mobi] or {script} -a")
         sys.exit(-1)
 
     if  '-a' == sys.argv[1]:
