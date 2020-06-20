@@ -82,12 +82,9 @@ class EPUB_books_finder():
 		if not success:
 			sys.exit(-1)
 
-	def isxhtml(self,filename):
-		'''判断是否是html或者xhtml,既电子书的文字文档'''
-		if filename.endswith('.html') or filename.endswith('.xhtml'):
-			return True
-		else:
-			return False
+    def isxhtml(self,name):
+        '''判断是否是htm, html或者xhtml,即电子书文档格式'''
+        return name.endswith('.html') or name.endswith('.xhtml') or name.endswith('.htm')
 
 	def find_xhtml(self,zipdir):
 		'''递归式的查找xhtml文件并添加到列表中'''
