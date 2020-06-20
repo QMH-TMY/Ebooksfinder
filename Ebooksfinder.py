@@ -78,8 +78,8 @@ class EPUBbooksfinder():
     def write2booklist(self,books):
         '''将所有匹配到的书籍写入文件，一行一本'''
         with open(self.booklist,'a+') as bklstObj:
-            for i in range(len(books)):
-                bklstObj.write(books[i]+ '\n')
+            for book in books:
+                bklstObj.write(book + '\n')
 
     def findBook(self,html):
         '''在一个html文件中查找书籍'''
@@ -105,8 +105,8 @@ class EPUBbooksfinder():
 
         books = sorted(set(books), key=books.index)   #去重
         with open(self.booklist,'w+') as bkObj:
-            for i in range(len(books)):
-                bkObj.write(books[i]+ '\n')           #再次写入
+            for book in books:
+                bkObj.write(book + '\n')           #再次写入
 
     def search(self):
         '''功能函数，直接调用这一个就可'''
