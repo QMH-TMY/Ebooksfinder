@@ -1,5 +1,5 @@
 ### Description  
-[[中文版](./README_CN.m)] Command line interface for finding books recommended by author in an ebook(epub or mobi type).
+[[中文版](./README_CN.md)] Command line interface for finding books recommended by author in an ebook(epub or mobi type).
 
 ### Compatible OS 
 - Linux
