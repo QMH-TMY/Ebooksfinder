@@ -30,7 +30,7 @@ class EPUBbooksfinder():
         else:
             return '/'
 
-    def __init__(self, epubName, suffix='.bklst'):
+    def __init__(self, epubName, suffix='.txt'):
         '''初始化程序运行的信息'''
         self.delimiter = EPUBbooksfinder.delimiter()  #目录分隔符,windows下是\
         self.htmlLst   = []                           #全局变量，保存(x)html的具体路径
