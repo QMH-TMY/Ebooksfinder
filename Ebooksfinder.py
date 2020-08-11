@@ -3,6 +3,7 @@
 #
 #    Author: Shieber
 #    Date: 2019.01.04
+#    Find books, included by 《》, recommended by author(s)
 
 import sys
 import re
@@ -14,11 +15,11 @@ from send2trash import send2trash
 from os.path import join,isdir,exists,basename 
 from os import makedirs,walk,chdir,getcwd,listdir
 
-class EPUBbooksfinder():
+class Booksfinder():
     '''
-        epub,mobi电子书中推荐书籍获取器，通过命令行传入电子书名称
+        epub, mobi电子书中推荐书籍获取器，通过命令行传入电子书名称
         程序自动查找书中作者提到的所有以中文书名号《》括起来的书籍。
-        -a参数，自动查找当前目录下的所有以中文书名号《》括起来的书籍。
+        -a参数，自动在当前目录下所有电子书中查找书籍并保存。
     '''
 
     #依据系统设定分隔符
@@ -32,7 +33,7 @@ class EPUBbooksfinder():
 
     def __init__(self, epubName, suffix='.txt'):
         '''初始化程序运行的信息'''
-        self.delimiter = EPUBbooksfinder.delimiter()  #目录分隔符,windows下是\
+        self.delimiter = Booksfinder.delimiter()  #目录分隔符,windows下是\
         self.htmlLst   = []                           #全局变量，保存(x)html的具体路径
         self.epubName  = epubName                     #初始化电子书名
         self.suffix    = suffix                       #书单的后缀名,可自行设置
@@ -117,7 +118,7 @@ class EPUBbooksfinder():
             for book in books:
                 obj.write(book)                       #再次写入
 
-    def search(self):
+    def searchAndSave(self):
         '''实现逻辑'''
         cwd = getcwd()
 
@@ -148,13 +149,13 @@ def getBookList(ebook):
         sys.exit(-1)
 
     if 'all' != ebook:
-        ebooksfinder = EPUBbooksfinder(ebook)
-        ebooksfinder.search()
+        ebooksfinder = Booksfinder(ebook)
+        ebooksfinder.searchAndSave()
     else:
         for ebook in listdir('.'):
             if ebook.endswith('.epub') or ebook.endswith('.mobi'):
-                ebooksfinder = EPUBbooksfinder(ebook)
-                ebooksfinder.search()
+                ebooksfinder = Booksfinder(ebook)
+                ebooksfinder.searchAndSave()
 
 if __name__ == "__main__":
     getBookList()
